@@ -1,0 +1,28 @@
+@mixin sec {
+    padding: 0 100px;
+}
+
+@mixin inner {
+    width: 1440px;
+    margin: 0 auto;
+}
+
+@mixin row ($display: flex, $gap) {
+    display: $display;
+    gap: $gap;
+}
+
+@mixin position($position: relative, $inset, $tranX, $tranY, $zindex) {
+    position: $position;
+    inset: $inset;
+    transform: translate($tranX, $tranY);
+    z-index: $zindex;
+}
+
+@mixin btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    line-height: 1;
+    cursor: pointer;
+}
