@@ -1,22 +1,19 @@
+// variable
+$maincolor: #007ba6;
+$rgba_bg: rgba(255, 255, 255, 0.6);
+$pc_w: 1440px;
+$mo_w: 768px;
+$m_border: 1px solid #ddd;
+
+// mixin
+
 @mixin sec {
     padding: 0 100px;
 }
 
 @mixin inner {
-    width: 1440px;
+    width: $pc_w;
     margin: 0 auto;
-}
-
-@mixin row ($display: flex, $gap) {
-    display: $display;
-    gap: $gap;
-}
-
-@mixin position($position: relative, $inset, $tranX, $tranY, $zindex) {
-    position: $position;
-    inset: $inset;
-    transform: translate($tranX, $tranY);
-    z-index: $zindex;
 }
 
 @mixin btn {
@@ -25,4 +22,21 @@
     outline: none;
     line-height: 1;
     cursor: pointer;
+}
+
+@mixin row ($display: flex, $gap: auto) {
+    display: $display;
+    gap: $gap;
+}
+
+@mixin position($position, $inset, $tranX, $tranY, $zindex) {
+    position: $position;
+    inset: $inset;
+    transform: translate($tranX, $tranY);
+    z-index: $zindex;
+}
+
+@mixin event_op($opacity, $visibiliy) {
+    opacity: $opacity;
+    visibility: $visibiliy;
 }
