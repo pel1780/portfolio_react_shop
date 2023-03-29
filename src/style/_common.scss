@@ -44,3 +44,8 @@ button,
 input {
     font-family: 'Outfit', 'Noto Sans KR', sans-serif;
 }
+
+.slick-track,
+.slcik-slide {
+    transition-delay: 0.3ms;
+}

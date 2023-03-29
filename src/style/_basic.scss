@@ -8,7 +8,7 @@ $m_border: 1px solid #ddd;
 // mixin
 
 @mixin sec {
-    padding: 0 100px;
+    padding: 100px 0;
 }
 
 @mixin inner {
@@ -21,6 +21,7 @@ $m_border: 1px solid #ddd;
     border: none;
     outline: none;
     line-height: 1;
+    vertical-align: middle;
     cursor: pointer;
 }
 
@@ -39,4 +40,45 @@ $m_border: 1px solid #ddd;
 @mixin event_op($opacity, $visibiliy) {
     opacity: $opacity;
     visibility: $visibiliy;
+}
+
+@mixin itm($height) {
+    padding: 10px;
+
+    .imgCase {
+        padding: 10px;
+        margin-bottom: 30px;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: $height;
+        }
+    }
+}
+
+@mixin dots {
+    margin-top: 10px;
+    text-align: center;
+
+    li {
+        display: inline-block;
+        margin: 0 4px;
+        background: #ddd;
+
+        border-radius: 50%;
+
+        &.slick-active {
+            background: $maincolor;
+        }
+
+        button {
+            @include btn;
+            display: block;
+            width: 15px;
+            height: 15px;
+            font-size: 0;
+            padding: 0;
+        }
+    }
 }

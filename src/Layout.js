@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import Footer from "./pages/Footer";
 import Header from "./pages/Header";
 
 const Layout = ({ shopData, subMenu }) => {
@@ -6,6 +7,7 @@ const Layout = ({ shopData, subMenu }) => {
         <div className="Wrap">
             <Header shopData={shopData} subMenu={subMenu} />
             <Outlet />
+            <Footer />
         </div>
     )
 }

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
 import Main from "./pages/Main";
+import MainListSlide from "./pages/MainListSlide";
 import SearchResult from "./shop/SearchResult";
 
 import './style/shop.scss';
@@ -11,11 +12,37 @@ const App = () => {
     const [shopData, setShopData] = useState([]);
     const getShopData = async () => {
         const result = await axios.get('https://desipossa.github.io/shop_cra/assets/data.json');
-        setShopData(result.data);
+        const r = await result.data;
+        const rd = r.map(it => {
+            return {
+                price: it.price != '0.0' ? it.price : '10.0',
+                id: it.id,
+                name: it.name,
+                api_featured_image: it.api_featured_image,
+                description: it.description,
+                product_type: it.product_type,
+                product_colors: it.product_colors,
+                category: it.category
+            }
+        })
+        setShopData(rd);
     }
     useEffect(() => {
         getShopData();
     }, []);
+
+    console.log(shopData)
+
+    const [sw, setW] = useState([]);
+    const getKr = async () => {
+        const w = await axios.get('https://api.manana.kr/exchange/rate.json')
+        setW(w.data[1].rate);
+    }
+
+    useEffect(() => {
+        getKr()
+    }, []);
+
     console.log(shopData)
 
     const dataType = shopData.map(it => it.product_type);
@@ -38,7 +65,12 @@ const App = () => {
     return (
         <Routes>
             <Route path='/' element={<Layout shopData={shopData} subMenu={subMenu} />}>
-                <Route index element={<Main shopData={shopData} />} />
+                <Route path="/" element={<Main shopData={shopData} sw={sw} />}>
+                    <Route index element={<MainListSlide cate={'cream'} shopData={shopData} sw={sw} />}></Route>
+                    <Route path="tab/cream" element={<MainListSlide cate={'cream'} shopData={shopData} sw={sw} />}></Route>
+                    <Route path="tab/palette" element={<MainListSlide cate={'palette'} shopData={shopData} sw={sw} />}></Route>
+                    <Route path="tab/concealer" element={<MainListSlide cate={'concealer'} shopData={shopData} sw={sw} />}></Route>
+                </Route>
                 <Route path="search" element={<SearchResult shopData={shopData} />} />
             </Route>
         </Routes>
