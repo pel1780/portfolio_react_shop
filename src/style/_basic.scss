@@ -11,6 +11,10 @@ $m_border: 1px solid #ddd;
     padding: 100px 0;
 }
 
+@mixin detail {
+    padding: 180px 0 100px 0;
+}
+
 @mixin inner {
     width: $pc_w;
     margin: 0 auto;
@@ -42,17 +46,19 @@ $m_border: 1px solid #ddd;
     visibility: $visibiliy;
 }
 
-@mixin itm($height) {
-    padding: 10px;
+@mixin img($height) {
+    object-fit: cover;
+    width: 100%;
+    height: $height;
+}
 
+@mixin itm($height) {
     .imgCase {
         padding: 10px;
         margin-bottom: 30px;
 
         img {
-            object-fit: cover;
-            width: 100%;
-            height: $height;
+            @include img($height);
         }
     }
 }

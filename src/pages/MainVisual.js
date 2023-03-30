@@ -20,6 +20,7 @@ const MainVisual = () => {
         autoplaySpeed: 3000,
         pauseOnHover: false,
         pauseOnFocus: false,
+        fade: true
     }
     return (
         <section className="MainVisual">

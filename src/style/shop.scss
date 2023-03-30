@@ -172,14 +172,13 @@ main {
         }
 
         .controller {
-            @include position(absolute, auto auto 100px 50%, 0, 0, auto);
+            @include position(absolute, auto auto 73px 50%, 0, 0, auto);
             margin: 0 0 0 -720px;
 
             button {
                 @include btn;
                 color: #fff;
                 font-size: 30px;
-
 
                 &.pause {
                     font-size: 48px;
@@ -232,6 +231,7 @@ main {
                     .itm {
                         @include itm(245px);
                         text-align: center;
+                        padding: 10px;
 
                         .itmTit {
                             font-size: 18px;
@@ -244,6 +244,117 @@ main {
                         @include dots;
                     }
                 }
+            }
+        }
+    }
+
+    .MainBanner {
+        @include inner;
+        position: relative;
+        overflow: hidden;
+        padding: 170px 0;
+
+        &::before {
+            content: "";
+            @include position(absolute, -10px -10px -10px -10px, 0, 0, -1);
+            background: url(../../public/image/mainBanner.jpg) no-repeat center bottom -260px/cover;
+            filter: grayscale(1) blur(2px);
+        }
+
+        .inner {
+            @include inner;
+            color: #fff;
+            text-align: center;
+            text-shadow: 0 0 1px #333;
+
+            h2 {
+                font-size: 40px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 20px;
+                margin-bottom: 30px;
+            }
+
+            a {
+                display: inline-block;
+                font-size: 24px;
+                padding-bottom: 3px;
+                border-bottom: 1px solid #fff;
+            }
+        }
+    }
+
+    .MainList {
+        @include sec;
+
+        .inner {
+            @include inner;
+
+            .CateTit {
+                margin-bottom: 50px;
+                text-align: center;
+
+                h2 {
+                    font-size: 50px;
+                    margin-bottom: 10px;
+                }
+
+                a {
+                    font-size: 14px;
+
+                    span {
+                        font-size: 24px;
+                        margin-right: 5px;
+                    }
+                }
+            }
+
+
+            .list {
+                @include row ($gap: 30px);
+
+                .itm {
+                    @include itm(270px);
+                    text-align: center;
+
+                    .itmTit {
+                        font-size: 18px;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    .MainAbout {
+        @include sec;
+        background: #f9f9f9 url(../../public/image/sec_bg.png) no-repeat;
+        text-align: center;
+
+        figure {
+            height: 70px;
+            margin-bottom: 30px;
+
+            img {
+                height: 100%;
+            }
+        }
+
+        p {
+            font-size: 30px;
+            font-weight: 500;
+            color: $maincolor;
+            margin-bottom: 20px;
+        }
+
+        a {
+            font-size: 12px;
+
+            span {
+                font-size: 20px;
+                margin-right: 5px;
             }
         }
     }
@@ -274,5 +385,159 @@ main {
     .copy {
         @include inner;
         font-size: 13px;
+    }
+}
+
+// pages
+
+.detailItm {
+    @include detail;
+
+    .inner {
+        @include inner;
+        @include row($gap: 100px);
+
+        figure {
+            width: 520px;
+
+            img {
+                @include img(600px);
+            }
+        }
+
+        .des_case {
+            flex: 1;
+        }
+
+        strong {
+            display: block;
+            margin-bottom: 20px;
+            font-size: 50px;
+        }
+
+        .color {
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            padding-right: 200px;
+            margin-bottom: 50px;
+        }
+
+        button {
+            @include btn;
+            font-size: 24px;
+            border-bottom: 1px solid #333;
+        }
+    }
+}
+
+.Cart {
+    @include detail;
+
+    .inner {
+        @include inner;
+        text-align: center;
+
+        h2 {
+            font-size: 50px;
+            margin-bottom: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            border-top: $m_border;
+            border-bottom: $m_border;
+            line-height: 50px;
+        }
+
+        tbody {
+            tr {
+                border-bottom: $m_border;
+            }
+
+            .img_case {
+                width: 180px;
+
+                img {
+                    @include img(180px);
+                }
+            }
+
+            button {
+                @include btn;
+                border: $m_border;
+                margin-left: 5px;
+                padding: 0 3px;
+                vertical-align: -1px;
+            }
+        }
+
+        .total {
+            display: block;
+            margin-top: 30px;
+            text-align: right;
+        }
+    }
+}
+
+
+.CateList {
+    @include detail;
+    @include inner;
+
+    .CateTit {
+        text-align: center;
+        margin-bottom: 50px;
+
+        h2 {
+            font-size: 50px;
+            margin-bottom: 50px;
+        }
+
+        .service {
+            @include row;
+            justify-content: space-between;
+
+            &>ul {
+                @include row($gap: 20px);
+
+                &:nth-child(1) {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+    .list {
+        @include row($display: grid, $gap: 10px);
+        grid-template-columns: repeat(7, 1fr);
+
+        .itm {
+            @include itm(200px);
+
+            a {
+                @include row;
+                flex-direction: column;
+            }
+
+
+            .itmTit {
+                margin-bottom: 10px;
+            }
+
+            .color {
+                margin-bottom: 10px;
+            }
+
+            .itmPrice {
+                align-items: flex-end;
+            }
+        }
     }
 }

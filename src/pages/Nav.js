@@ -5,7 +5,7 @@ const Nav = ({ shopData, subMenu }) => {
         <nav className="gnb">
             <ul>
                 <li>
-                    <Link to={`/shop`}>Shop</Link>
+                    <Link to={`#!`}>Shop</Link>
                     <ul className="sub_menu">
                         {
                             subMenu.map((it, idx) => {

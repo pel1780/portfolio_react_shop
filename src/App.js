@@ -4,12 +4,16 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
 import Main from "./pages/Main";
 import MainListSlide from "./pages/MainListSlide";
+import Cart from "./shop/Cart";
+import CateList from "./shop/CateList";
+import Itm from "./shop/Itm";
 import SearchResult from "./shop/SearchResult";
 
 import './style/shop.scss';
 
 const App = () => {
     const [shopData, setShopData] = useState([]);
+    const [cart, setCart] = useState([]);
     const getShopData = async () => {
         const result = await axios.get('https://desipossa.github.io/shop_cra/assets/data.json');
         const r = await result.data;
@@ -72,6 +76,9 @@ const App = () => {
                     <Route path="tab/concealer" element={<MainListSlide cate={'concealer'} shopData={shopData} sw={sw} />}></Route>
                 </Route>
                 <Route path="search" element={<SearchResult shopData={shopData} />} />
+                <Route path="detail/:itm" element={<Itm shopData={shopData} cart={cart} setCart={setCart} />} />
+                <Route path="cart" element={<Cart shopData={shopData} cart={cart} setCart={setCart} sw={sw} />} />
+                <Route path=":cate" element={<CateList shopData={shopData} sw={sw} subMenu={subMenu} />} />
             </Route>
         </Routes>
     )

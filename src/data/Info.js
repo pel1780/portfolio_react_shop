@@ -25,3 +25,9 @@ export const MainSlideData = [
         link: '/',
     },
 ]
+
+export const MainBannerData = {
+    tit: '유연한 팁으로 얇고 정교한 핏팅',
+    desc: 'NEW SHADES 윙크 리퀴드 컨실러',
+    link: '/'
+}

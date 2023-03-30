@@ -7,14 +7,13 @@ const MainListSlide = ({ shopData, sw, cate }) => {
     const list = shopData.filter(it => it.category === cate);
     const slide = useRef(null);
 
-    console.log(list)
     const slideOption = {
         arrows: false,
         dots: true,
         slidesToShow: 4,
         slidesToScroll: 1,
-        // autoplay: true,
-        autoplaySpeed: 2000,
+        autoplay: true,
+        autoplaySpeed: 2500,
         pauseOnHover: false,
         pauseOnFocus: false,
     }

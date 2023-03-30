@@ -1,8 +1,14 @@
+
+import { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import MainAbout from "./MainAbout";
+import MainBanner from "./MainBanner";
+import MainList from "./MainList";
 import MainVisual from "./MainVisual";
 
-const Main = ({ shopData }) => {
-    const TabData = ['cream', 'palette', 'concealer']
+const Main = ({ shopData, sw }) => {
+    const TabData = ['cream', 'palette', 'concealer'];
+    const [click, setClick] = useState(false);
     return (
         <main>
             <MainVisual />
@@ -13,7 +19,10 @@ const Main = ({ shopData }) => {
                         <ul className="tabMenu">
                             {
                                 TabData.map((it, idx) => <li key={idx}>
-                                    <NavLink to={`/tab/${it}`} activeClassName="active">
+                                    <NavLink to={`/tab/${it}`}
+                                        className={idx === 0 && !click ? 'active' : ''}
+                                        activeclassname="active"
+                                        onClick={() => setClick(true)}>
                                         #{it}
                                     </NavLink>
                                 </li>)
@@ -25,7 +34,10 @@ const Main = ({ shopData }) => {
                     </div>
                 </div>
             </section>
-        </main>
+            <MainBanner />
+            <MainList cate={'liquid'} shopData={shopData} sw={sw} />
+            <MainAbout />
+        </main >
     )
 }
 
