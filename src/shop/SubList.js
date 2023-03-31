@@ -1,46 +1,36 @@
+import React from 'react'
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
 
-const CateList = ({ shopData, sw, menu }) => {
-    const { type } = useParams();
-    const typeTit = menu.find(it => it.type === type);
-
-    const subtit = typeTit.sub;
-    const list = shopData.filter(it =>
-        it.product_type == subtit[0]
-        || it.product_type == subtit[1]
-        || it.product_type == subtit[2]
-        || it.product_type == subtit[3]
-    );
-
-
-
-    const [sort, setSort] = useState([...list]);
+const SubList = ({ shopData, sw }) => {
+    const { sub } = useParams();
+    const subList = shopData.filter(it => it.product_type === sub);
+    console.log(subList)
+    const [sort, setSort] = useState([...subList]);
 
     const priceUp = () => {
-        setSort(list.sort((a, b) => b.price - a.price));
+        setSort(subList.sort((a, b) => b.price - a.price));
     }
     const priceDown = () => {
-        setSort(list.sort((a, b) => a.price - b.price));
+        setSort(subList.sort((a, b) => a.price - b.price));
     }
     const sin = () => {
-        setSort(list.sort((a, b) => b.id - a.id));
+        setSort(subList.sort((a, b) => b.id - a.id));
     }
     const hot = () => {
-        setSort(list.sort((a, b) => b.description?.length - a.description?.length));
+        setSort(subList.sort((a, b) => b.description?.length - a.description?.length));
     }
     useEffect(() => {
-        setSort(list)
-    }, [type, shopData])
+        setSort(subList)
+    }, [sub, shopData])
+    // console.log(sort)
+
 
     return (
         <div className="inner CateList">
             <div className="CateTit">
-                <h2>{type}</h2>
+                <h2>{sub}</h2>
                 <div className="service">
-                    <ul className="sub">
-                        {typeTit.sub.map((it, idx) => <li key={idx}><Link to={`/${type}/${it}`}>{it}</Link></li>)}
-                    </ul>
                     <ul className="sort">
                         <li onClick={priceUp}>높은가격</li>
                         <li onClick={priceDown}>낮은가격</li>
@@ -52,7 +42,7 @@ const CateList = ({ shopData, sw, menu }) => {
             </div>
             <ul className="list">
 
-                {list &&
+                {sort &&
                     sort.map(it => {
                         return (
                             <li key={it.id} className="itm">
@@ -84,4 +74,4 @@ const CateList = ({ shopData, sw, menu }) => {
     )
 }
 
-export default CateList;
+export default SubList

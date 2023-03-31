@@ -1,12 +1,14 @@
 import { Outlet } from "react-router-dom";
 import Footer from "./pages/Footer";
 import Header from "./pages/Header";
+import ToTop from "./pages/ToTop";
 
-const Layout = ({ shopData, subMenu }) => {
+const Layout = ({ shopData, menu, cart }) => {
     return (
         <div className="Wrap">
-            <Header shopData={shopData} subMenu={subMenu} />
+            <Header shopData={shopData} menu={menu} cart={cart} />
             <Outlet />
+            <ToTop />
             <Footer />
         </div>
     )

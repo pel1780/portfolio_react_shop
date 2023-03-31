@@ -7,10 +7,10 @@ const MainList = ({ shopData, sw, cate }) => {
 
     return (
         <section className='MainList'>
-            <div className="inner CateList">
+            <div className="inner">
                 <div className="CateTit">
                     <h2>{cate}</h2>
-                    <Link><span>More</span><BsChevronRight /></Link>
+                    <Link to={`/FACE`}><span>More</span><BsChevronRight /></Link>
                 </div>
                 <ul className="list">
                     {

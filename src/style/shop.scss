@@ -1,392 +1,7 @@
 @import './common';
 @import './basic';
+@import './page';
 
-.Header {
-    @include position(fixed, 0 0 auto 0, 0, 0, 99);
-    line-height: 80px;
-    height: 80px;
-    font-size: 20px;
-    background: $rgba_bg;
-    border-bottom: $m_border;
-
-    a {
-        display: block;
-        padding: 0 15px;
-    }
-
-    .inner {
-
-        @include row;
-        @include inner;
-        justify-content: space-between;
-
-        .gnb {
-            margin-left: -15px;
-
-            &>ul {
-                @include row;
-
-                &>li {
-
-                    &:hover .sub_menu {
-                        @include event_op(1, visible);
-                    }
-
-                    .sub_menu {
-                        @include position(absolute, 80px 0 auto 0, 0, 0, auto);
-                        @include row($gap: 30px);
-                        line-height: 40px;
-                        font-size: 16px;
-                        gap: 70px;
-                        width: 1440px;
-                        margin: 0 auto;
-                        height: 220px;
-                        padding: 10px 0;
-
-                        @include event_op(0, hidden);
-                        transition: 0.5s;
-
-                        &::after {
-                            content: "";
-                            @include position(absolute, 0 0 auto 50%, -50%, 0, -1);
-                            display: block;
-                            width: 100vw;
-                            background: $rgba_bg;
-                            height: 220px;
-                        }
-
-                        ul {
-                            flex-direction: column;
-                            gap: 0;
-                        }
-                    }
-                }
-            }
-        }
-
-        .right_menu {
-            @include row;
-            margin-right: -15px;
-
-            button {
-                @include btn;
-            }
-
-            .search {
-                padding: 0 15px;
-            }
-
-            .search_case {
-                @include position(absolute, 80px 0 0 auto, 100%, 0, 99);
-                background: $rgba_bg;
-                height: calc(100vh - 80px);
-                padding: 100px 30px;
-                font-size: 16px;
-                line-height: 30px;
-                transition: 0.5s;
-
-                &.on {
-                    transform: translate(0, 0);
-                }
-
-                form {
-                    margin-bottom: 50px;
-
-                    input {
-                        @include btn;
-                        border-bottom: 1px solid #333;
-                        margin-right: 10px;
-                    }
-
-                    button {
-                        font-size: 20px;
-                    }
-                }
-
-                span {
-                    display: block;
-                    margin-bottom: 10px;
-                }
-            }
-
-            .lang {
-                position: relative;
-
-                &:hover ul {
-                    line-height: 40px;
-                }
-
-                ul {
-                    @include position(absolute, 80px 0 auto 0, 0, 0, 99);
-                    line-height: 0;
-                    background: $rgba_bg;
-                    overflow: hidden;
-                }
-            }
-
-        }
-    }
-}
-
-main {
-    .MainVisual {
-
-        .slide {
-            position: relative;
-            height: 100vh;
-            text-align: center;
-
-            .txt_case {
-                @include position(absolute, auto auto 100px 50%, -50%, 0, auto);
-                color: #fff;
-
-                h2 {
-                    font-size: 40px;
-                    font-weight: 500;
-                    margin-bottom: 20px;
-                }
-
-                p {
-                    font-size: 20px;
-                    margin-bottom: 10px;
-                }
-
-                span {
-                    display: block;
-                    margin-bottom: 50px;
-                    font-size: 20px;
-                }
-
-                a {
-                    font-size: 20px;
-                    padding-bottom: 3px;
-                    border-bottom: 1px solid #fff;
-                }
-            }
-        }
-
-        @for $i from 1 to 3 {
-            .slide0#{$i} {
-                background: url(../../public/image/mainVisual0#{$i}.jpg) no-repeat center center/cover;
-            }
-        }
-
-        .controller {
-            @include position(absolute, auto auto 73px 50%, 0, 0, auto);
-            margin: 0 0 0 -720px;
-
-            button {
-                @include btn;
-                color: #fff;
-                font-size: 30px;
-
-                &.pause {
-                    font-size: 48px;
-
-                    &>.on {
-                        display: none;
-                    }
-                }
-            }
-
-        }
-    }
-
-    .MainTab {
-        @include sec;
-
-        .inner {
-            @include inner;
-            @include row($gap: 100px);
-
-            .tabMenuCase {
-                h2 {
-                    font-size: 44px;
-                    margin-bottom: 20px;
-                }
-
-                .tabMenu {
-                    li {
-                        font-size: 20px;
-
-                        a {
-                            display: block;
-                            padding: 5px 0;
-
-                            &.active {
-                                color: $maincolor;
-                            }
-
-                        }
-                    }
-                }
-            }
-
-            .tabContent {
-                position: relative;
-                overflow: hidden;
-
-                .slidelist {
-
-                    .itm {
-                        @include itm(245px);
-                        text-align: center;
-                        padding: 10px;
-
-                        .itmTit {
-                            font-size: 18px;
-                            margin-bottom: 10px;
-                            min-height: 40px;
-                        }
-                    }
-
-                    .slick-dots {
-                        @include dots;
-                    }
-                }
-            }
-        }
-    }
-
-    .MainBanner {
-        @include inner;
-        position: relative;
-        overflow: hidden;
-        padding: 170px 0;
-
-        &::before {
-            content: "";
-            @include position(absolute, -10px -10px -10px -10px, 0, 0, -1);
-            background: url(../../public/image/mainBanner.jpg) no-repeat center bottom -260px/cover;
-            filter: grayscale(1) blur(2px);
-        }
-
-        .inner {
-            @include inner;
-            color: #fff;
-            text-align: center;
-            text-shadow: 0 0 1px #333;
-
-            h2 {
-                font-size: 40px;
-                margin-bottom: 10px;
-            }
-
-            p {
-                font-size: 20px;
-                margin-bottom: 30px;
-            }
-
-            a {
-                display: inline-block;
-                font-size: 24px;
-                padding-bottom: 3px;
-                border-bottom: 1px solid #fff;
-            }
-        }
-    }
-
-    .MainList {
-        @include sec;
-
-        .inner {
-            @include inner;
-
-            .CateTit {
-                margin-bottom: 50px;
-                text-align: center;
-
-                h2 {
-                    font-size: 50px;
-                    margin-bottom: 10px;
-                }
-
-                a {
-                    font-size: 14px;
-
-                    span {
-                        font-size: 24px;
-                        margin-right: 5px;
-                    }
-                }
-            }
-
-
-            .list {
-                @include row ($gap: 30px);
-
-                .itm {
-                    @include itm(270px);
-                    text-align: center;
-
-                    .itmTit {
-                        font-size: 18px;
-                        margin-bottom: 10px;
-                    }
-                }
-            }
-        }
-    }
-
-    .MainAbout {
-        @include sec;
-        background: #f9f9f9 url(../../public/image/sec_bg.png) no-repeat;
-        text-align: center;
-
-        figure {
-            height: 70px;
-            margin-bottom: 30px;
-
-            img {
-                height: 100%;
-            }
-        }
-
-        p {
-            font-size: 30px;
-            font-weight: 500;
-            color: $maincolor;
-            margin-bottom: 20px;
-        }
-
-        a {
-            font-size: 12px;
-
-            span {
-                font-size: 20px;
-                margin-right: 5px;
-            }
-        }
-    }
-}
-
-
-
-.Footer {
-    padding: 50px 0;
-    background: #ededed;
-    color: #555;
-    font-size: 15px;
-
-    .inner {
-        @include inner;
-        margin-bottom: 20px;
-
-        .foot_left {
-            @include row($gap: 20px);
-            margin-bottom: 10px;
-        }
-
-        .foot_right {
-            @include row($gap: 20px);
-        }
-    }
-
-    .copy {
-        @include inner;
-        font-size: 13px;
-    }
-}
 
 // pages
 
@@ -435,6 +50,7 @@ main {
 
 .Cart {
     @include detail;
+    min-height: 82vh;
 
     .inner {
         @include inner;
@@ -459,6 +75,11 @@ main {
         tbody {
             tr {
                 border-bottom: $m_border;
+
+                &.none {
+                    line-height: 100px;
+                    text-align: center;
+                }
             }
 
             .img_case {
@@ -490,8 +111,10 @@ main {
 .CateList {
     @include detail;
     @include inner;
+    min-height: 82vh;
 
     .CateTit {
+        display: block;
         text-align: center;
         margin-bottom: 50px;
 
@@ -507,19 +130,28 @@ main {
             &>ul {
                 @include row($gap: 20px);
 
-                &:nth-child(1) {
+                &.sub {
                     font-size: 20px;
+                }
+
+                &.sort {
+                    margin-left: auto;
                 }
             }
         }
     }
 
     .list {
-        @include row($display: grid, $gap: 10px);
-        grid-template-columns: repeat(7, 1fr);
+        @include row($display: grid, $gap: 30px);
+        grid-template-columns: repeat(6, 1fr);
+        text-align: center;
 
         .itm {
             @include itm(200px);
+
+            figure {
+                border: $m_border;
+            }
 
             a {
                 @include row;

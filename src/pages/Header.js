@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import Nav from "./Nav";
 import Search from "./Search";
 
-const Header = ({ shopData, subMenu }) => {
+const Header = ({ shopData, menu, cart }) => {
 
     return (
         <header className="Header">
             <div className="inner">
-                <Nav shopData={shopData} subMenu={subMenu} />
+                <Nav shopData={shopData} menu={menu} />
                 <h1>
                     <Link to={`/`}>
                         <img src={`${process.env.PUBLIC_URL}/image/logo.svg`} alt="" />
@@ -15,7 +15,7 @@ const Header = ({ shopData, subMenu }) => {
                 </h1>
                 <ul className="right_menu">
                     <li className="cart">
-                        <Link to='/'>Cart<span></span></Link>
+                        <Link to='/cart'>Cart<span>{cart.length}</span></Link>
                     </li>
                     <Search shopData={shopData} />
                     <li className="lang">

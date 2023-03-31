@@ -22,7 +22,7 @@ const Cart = ({ shopData, cart, setCart, sw }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
+                        {cart.length > 0 ?
                             cart.map(it => {
                                 return (
                                     <tr key={it.id}>
@@ -33,7 +33,7 @@ const Cart = ({ shopData, cart, setCart, sw }) => {
                                             <button onClick={() => cartModify(it.id)}>+</button></td>
                                     </tr>
                                 )
-                            })
+                            }) : <tr className="none"><td colSpan={4}>장바구니가 비어 있습니다.</td></tr>
                         }
                     </tbody>
                 </table>

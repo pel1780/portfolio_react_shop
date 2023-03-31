@@ -8,6 +8,7 @@ import Cart from "./shop/Cart";
 import CateList from "./shop/CateList";
 import Itm from "./shop/Itm";
 import SearchResult from "./shop/SearchResult";
+import SubList from "./shop/SubList";
 
 import './style/shop.scss';
 
@@ -57,10 +58,10 @@ const App = () => {
     const lipType = typeItm.filter(it => it.includes('lip'));
     const faceType = typeItm.filter(it => it.includes('foundation') || it.includes('blush') || it.includes('bronzer'));
 
-    const subMenu = [
-        { tit: 'FACE', sub: faceType },
-        { tit: 'EYE', sub: eyeType },
-        { tit: 'LIP', sub: lipType },
+    const menu = [
+        { type: 'FACE', sub: faceType },
+        { type: 'EYE', sub: eyeType },
+        { type: 'LIP', sub: lipType },
     ];
 
 
@@ -68,7 +69,7 @@ const App = () => {
 
     return (
         <Routes>
-            <Route path='/' element={<Layout shopData={shopData} subMenu={subMenu} />}>
+            <Route path='/' element={<Layout shopData={shopData} menu={menu} cart={cart} />}>
                 <Route path="/" element={<Main shopData={shopData} sw={sw} />}>
                     <Route index element={<MainListSlide cate={'cream'} shopData={shopData} sw={sw} />}></Route>
                     <Route path="tab/cream" element={<MainListSlide cate={'cream'} shopData={shopData} sw={sw} />}></Route>
@@ -78,7 +79,8 @@ const App = () => {
                 <Route path="search" element={<SearchResult shopData={shopData} />} />
                 <Route path="detail/:itm" element={<Itm shopData={shopData} cart={cart} setCart={setCart} />} />
                 <Route path="cart" element={<Cart shopData={shopData} cart={cart} setCart={setCart} sw={sw} />} />
-                <Route path=":cate" element={<CateList shopData={shopData} sw={sw} subMenu={subMenu} />} />
+                <Route path=":type" element={<CateList shopData={shopData} sw={sw} menu={menu} />} />
+                <Route path=":type/:sub" element={<SubList shopData={shopData} sw={sw} menu={menu} />} />
             </Route>
         </Routes>
     )

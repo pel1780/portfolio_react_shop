@@ -1,23 +1,62 @@
 // variable
 $maincolor: #007ba6;
-$rgba_bg: rgba(255, 255, 255, 0.6);
+$rgba_bg: rgba(255, 255, 255, 0.7);
 $pc_w: 1440px;
-$mo_w: 768px;
+$tablet_w: 768px;
+$mobile_w: 480px;
 $m_border: 1px solid #ddd;
 
 // mixin
 
+@mixin mobile {
+    @media (max-width: #{$mobile_w}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: #{$tablet_w}) {
+        @content;
+    }
+}
+
 @mixin sec {
     padding: 100px 0;
+
+    @include tablet {
+        padding: 80px 0;
+    }
+
+    @include mobile {
+        padding: 80px 0;
+    }
 }
 
 @mixin detail {
     padding: 180px 0 100px 0;
+
+    @include tablet {
+        padding: 160px 0 80px 0;
+    }
+
+    @include mobile {
+        padding: 160px 0 80px 0;
+    }
 }
 
 @mixin inner {
     width: $pc_w;
     margin: 0 auto;
+
+    @include tablet {
+        width: auto;
+        margin: 0 15px;
+    }
+
+    @include mobile {
+        width: auto;
+        margin: 0 15px;
+    }
 }
 
 @mixin btn {
@@ -29,7 +68,7 @@ $m_border: 1px solid #ddd;
     cursor: pointer;
 }
 
-@mixin row ($display: flex, $gap: auto) {
+@mixin row ($display: flex, $gap: 0) {
     display: $display;
     gap: $gap;
 }

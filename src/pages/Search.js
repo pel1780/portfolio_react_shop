@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Search = ({ shopData }) => {
     const navigate = useNavigate();
 
-    const [input, setInput] = useState('');
+    const [input, setInput] = useState('search');
     const [search, setSeach] = useState('');
 
     const searchHandler = e => {
@@ -28,7 +28,7 @@ const Search = ({ shopData }) => {
             <button className="search" onClick={() => setOn(!on)}>Search</button>
             <div className={`search_case ${on ? 'on' : ''}`}>
                 <form onSubmit={searchHandler}>
-                    <input type="text" value='Search' onChange={inputHandler} />
+                    <input type="text" value={input} onChange={inputHandler} />
                     <button><BsSearch /></button>
                 </form>
                 <span>추천 검색어</span>
