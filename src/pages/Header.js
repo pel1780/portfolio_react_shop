@@ -18,12 +18,6 @@ const Header = ({ shopData, menu, cart }) => {
                         <Link to='/cart'>Cart<span>{cart.length}</span></Link>
                     </li>
                     <Search shopData={shopData} />
-                    <li className="lang">
-                        <Link to='#!'>KR</Link>
-                        <ul>
-                            <li><Link to='#!'>EN</Link></li>
-                        </ul>
-                    </li>
                 </ul>
             </div>
         </header>

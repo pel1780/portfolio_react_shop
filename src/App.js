@@ -21,7 +21,8 @@ const App = () => {
         const r = await result.data;
         const rd = r.map(it => {
             return {
-                price: it.price == '0.0' ? '10.0' : it.price,
+                price: it.price == null ? '10.0' : it.price
+                    && it.price == '0.0' ? '10.0' : it.price,
                 id: it.id,
                 name: it.name.slice(0, 25),
                 api_featured_image: it.api_featured_image,

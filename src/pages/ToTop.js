@@ -12,6 +12,7 @@ font-size: 40px;
 color: #007ba6;
 opacity: 0;
 visibility: hidden;
+cursor: pointer;
 transition: .5s;
 
 &.on {

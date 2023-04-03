@@ -14,7 +14,7 @@ const Search = ({ shopData }) => {
     const searchHandler = e => {
         e.preventDefault();
         setSeach(input);
-        navigate(`search/?q=${input}`)
+        navigate(`search/?=${input}`)
     }
 
     const inputHandler = e => {
@@ -30,7 +30,7 @@ const Search = ({ shopData }) => {
             <button className="search" onClick={() => setOn(!on)}>Search</button>
             <div className={`search_case ${on ? 'on' : ''}`}>
                 <form onSubmit={searchHandler}>
-                    <input type="text" value={input} onChange={inputHandler} />
+                    <input type="text" placeholder={input} onChange={inputHandler} />
                     <button><BsSearch /></button>
                 </form>
                 <button onClick={() => setOn(!on)} className="close"><BsXLg /></button>
@@ -38,7 +38,7 @@ const Search = ({ shopData }) => {
                 <ul>
                     {
                         recommend.slice(0, 10).map((it, idx) => <li key={idx}>
-                            <Link to={`/${it.name}`}>{it.name}</Link>
+                            <Link to={`detail/${it.id}`}>{it.name}</Link>
                         </li>)
                     }
                 </ul>

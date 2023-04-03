@@ -23,7 +23,8 @@ const MainList = ({ shopData, sw, cate }) => {
                                                 onError={e => e.target.src = `${process.env.PUBLIC_URL}/image/missing_img.jpg`} />
                                         </figure>
                                         <div className="itmTit">{it.name}</div>
-                                        <div className="itmPrice">{parseInt(it.price * sw)}원</div>
+                                        <div className="itmPrice">{parseInt(it.price * sw).toString()
+                                            .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원</div>
                                     </Link>
                                 </li>
                             )

@@ -29,7 +29,8 @@ const Cart = ({ shopData, cart, setCart, sw }) => {
                                         <td className="img_case"><img src={it.img} alt=""
                                             onError={e => e.target.src = `${process.env.PUBLIC_URL}/image/missing_img.jpg`} /></td>
                                         <td className="name">{it.name}</td>
-                                        <td>{parseInt(it.price * sw)}원</td>
+                                        <td>{parseInt(it.price * sw).toString()
+                                            .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원</td>
                                         <td>{it.num}
                                             <button onClick={() => cartModify(it.id)}>+</button></td>
                                     </tr>
@@ -38,7 +39,8 @@ const Cart = ({ shopData, cart, setCart, sw }) => {
                         }
                     </tbody>
                 </table>
-                <span className="total">합계 : {parseInt(allPrice * sw)}</span>
+                <span className="total">합계 : {parseInt(allPrice * sw).toString()
+                    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원</span>
             </div>
         </div>
     )
