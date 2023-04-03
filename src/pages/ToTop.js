@@ -18,6 +18,10 @@ transition: .5s;
     opacity: 1;
     visibility: visible;
 }
+@media (max-width: 768px){
+    bottom: 50px;
+    right: 50px;
+}
 
 `
 const ToTop = () => {
