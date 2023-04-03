@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { BsXLg } from "react-icons/bs";
+
 const Search = ({ shopData }) => {
     const navigate = useNavigate();
 
@@ -31,6 +33,7 @@ const Search = ({ shopData }) => {
                     <input type="text" value={input} onChange={inputHandler} />
                     <button><BsSearch /></button>
                 </form>
+                <button onClick={() => setOn(!on)} className="close"><BsXLg /></button>
                 <span>추천 검색어</span>
                 <ul>
                     {

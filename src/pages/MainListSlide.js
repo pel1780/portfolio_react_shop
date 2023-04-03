@@ -16,6 +16,17 @@ const MainListSlide = ({ shopData, sw, cate }) => {
         autoplaySpeed: 2500,
         pauseOnHover: false,
         pauseOnFocus: false,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 3,
+                },
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                },
+            }]
     }
     return (
         <div className="content">
@@ -27,7 +38,8 @@ const MainListSlide = ({ shopData, sw, cate }) => {
                                 <div key={it.id} className="itm">
                                     <Link to={`/detail/${it.id}`}>
                                         <figure className="imgCase">
-                                            <img src={it.api_featured_image} alt="" />
+                                            <img src={it.api_featured_image} alt=""
+                                                onError={e => e.target.src = `${process.env.PUBLIC_URL}/image/missing_img.jpg`} />
                                         </figure>
                                         <div className="itmTit">{it.name}</div>
                                         <div className="itmPrice">{parseInt(it.price * sw)}원</div>

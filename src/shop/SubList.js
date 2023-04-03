@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 const SubList = ({ shopData, sw }) => {
     const { sub } = useParams();
     const subList = shopData.filter(it => it.product_type === sub);
-    console.log(subList)
     const [sort, setSort] = useState([...subList]);
 
     const priceUp = () => {
@@ -24,7 +23,6 @@ const SubList = ({ shopData, sw }) => {
         setSort(subList)
     }, [sub, shopData])
     // console.log(sort)
-
 
     return (
         <div className="inner CateList">
@@ -48,7 +46,10 @@ const SubList = ({ shopData, sw }) => {
                             <li key={it.id} className="itm">
                                 <Link to={`/detail/${it.id}`}>
                                     <figure className="imgCase">
-                                        <img src={it.api_featured_image} alt="" />
+                                        <img src={it.api_featured_image}
+                                            alt=""
+                                            onError={e => e.target.src = `${process.env.PUBLIC_URL}/image/missing_img.jpg`}
+                                        />
                                     </figure>
                                     <div className="itmTit">{it.name}</div>
                                     <ul className="color">
@@ -60,7 +61,7 @@ const SubList = ({ shopData, sw }) => {
                                                     width: 10,
                                                     height: 10
                                                 }}></li>
-                                            }).slice(0, 20)
+                                            }).slice(0, 19)
                                         }
                                     </ul>
                                     <div className="itmPrice">{parseInt(it.price * sw)}원</div>

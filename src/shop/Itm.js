@@ -32,13 +32,14 @@ const Itm = ({ shopData, cart, setCart }) => {
     return (
         <div className="detailItm">
             {
-                Itm &&
+                detailItm &&
                 <figure className="inner">
                     <figure>
-                        <img src={detailItm.api_featured_image} alt="" />
+                        <img src={detailItm.api_featured_image} alt=""
+                            onError={e => e.target.src = `${process.env.PUBLIC_URL}/image/missing_img.jpg`} />
                     </figure>
                     <div className="des_case">
-                        <strong>{detailItm.name}</strong>
+                        <strong> {detailItm.name}</strong>
                         <ul className="color">
                             {
                                 detailItm.product_colors?.map((color, idx) => {

@@ -129,6 +129,11 @@
                     }
                 }
 
+                .close {
+                    @include position(absolute, 30px 30px auto auto, 0, 0, auto);
+                    font-size: 20px;
+                }
+
                 span {
                     display: block;
                     margin-bottom: 10px;
@@ -154,8 +159,15 @@
     }
 
     @include tablet {
-
         .inner {
+            h1 {
+                a {
+                    img {
+                        min-width: 200px;
+                    }
+                }
+            }
+
             .gnb {
                 &>ul {
                     &>li {
@@ -201,7 +213,7 @@
 
                 &>ul {
                     @include position(absolute, 80px auto 0 0, -100%, 0, 99);
-                    background: $rgba_bg;
+                    background: #fff;
                     width: 250px;
                     height: calc(100vh - 80px);
                     flex-direction: column;
@@ -336,16 +348,11 @@ main {
             }
         }
 
-        @include tablet {}
-
-        @include mobile {
+        @include tablet {
             .slide {
-                height: 70vh;
-                text-align: left;
 
                 .txt_case {
-                    @include position(absolute, auto 15px 50px 15px, 0, 0, auto);
-                    color: #fff;
+                    @include position(absolute, auto 15px 200px 15px, 0, 0, auto);
 
                     h2 {
                         font-size: 30px;
@@ -363,8 +370,6 @@ main {
 
                     a {
                         font-size: 20px;
-                        padding-bottom: 3px;
-                        border-bottom: 1px solid #fff;
                     }
                 }
             }
@@ -376,25 +381,25 @@ main {
             }
 
             .controller {
-                @include position(absolute, auto 15px 23px auto, 0, 0, auto);
+                @include position(absolute, auto auto 23px 15px, 0, 0, auto);
                 margin: 0 0 0 0;
-
-                button {
-                    @include btn;
-                    color: #fff;
-                    font-size: 30px;
-
-                    &.pause {
-                        font-size: 48px;
-
-                        &>.on {
-                            display: none;
-                        }
-                    }
-                }
             }
         }
 
+        @include mobile {
+            .slide {
+                height: 70vh;
+                text-align: left;
+
+                .txt_case {
+                    @include position(absolute, auto 15px 50px 15px, 0, 0, auto);
+                }
+            }
+
+            .controller {
+                @include position(absolute, auto 15px 23px auto, 0, 0, auto);
+            }
+        }
     }
 
     .MainTab {
@@ -434,7 +439,7 @@ main {
                 .slidelist {
 
                     .itm {
-                        @include itm(245px);
+                        @include itm(215px);
                         text-align: center;
                         padding: 10px;
 
@@ -445,12 +450,73 @@ main {
                         .itmTit {
                             font-size: 18px;
                             margin-bottom: 10px;
-                            min-height: 40px;
+                            min-height: 54px;
                         }
                     }
 
                     .slick-dots {
                         @include dots;
+                    }
+                }
+            }
+        }
+
+        @include tablet {
+            .inner {
+                @include row($gap: 0);
+                flex-direction: column;
+
+                .tabMenuCase {
+                    h2 {
+                        text-align: center;
+                    }
+
+                    .tabMenu {
+                        @include row;
+                        justify-content: center;
+                        margin-bottom: 30px;
+
+                        li {
+                            a {
+                                display: block;
+                                padding: 5px 10px;
+                            }
+                        }
+                    }
+                }
+
+                .tabContent {
+                    .slidelist {
+
+                        .itm {
+                            @include itm(180px);
+                            text-align: center;
+                            padding: 10px;
+
+                            .itmTit {
+                                font-size: 16px;
+                                margin-bottom: 10px;
+                                min-height: 50px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @include mobile {
+            .inner {
+                .tabContent {
+                    .slidelist {
+                        .itm {
+                            @include itm(240px);
+
+                            .itmTit {
+                                font-size: 16px;
+                                margin-bottom: 10px;
+                                min-height: 40px;
+                            }
+                        }
                     }
                 }
             }
@@ -493,6 +559,49 @@ main {
                 border-bottom: 1px solid #fff;
             }
         }
+
+        @include tablet {
+            padding: 100px 0;
+
+            &::before {
+                background: url(../../public/image/mainBanner.jpg) no-repeat center bottom /cover;
+                filter: grayscale(1) blur(1px);
+            }
+
+            .inner {
+                h2 {
+                    font-size: 36px;
+                }
+
+                p {
+                    font-size: 20px;
+                    margin-bottom: 20px;
+                }
+
+                a {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        @include mobile {
+            padding: 80px 0;
+
+            .inner {
+                h2 {
+                    font-size: 24px;
+                }
+
+                p {
+                    font-size: 16px;
+                    margin-bottom: 20px;
+                }
+
+                a {
+                    font-size: 20px;
+                }
+            }
+        }
     }
 
     .MainList {
@@ -506,7 +615,7 @@ main {
                 text-align: center;
 
                 h2 {
-                    font-size: 50px;
+                    font-size: 44px;
                     margin-bottom: 10px;
                 }
 
@@ -520,12 +629,11 @@ main {
                 }
             }
 
-
             .list {
                 @include row ($gap: 30px);
 
                 .itm {
-                    @include itm(270px);
+                    @include itm(200px);
                     flex: 1;
                     text-align: center;
 
@@ -535,7 +643,44 @@ main {
 
                     .itmTit {
                         font-size: 18px;
+                        min-height: 32px;
                         margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+
+        @include tablet {
+            .inner {
+                .list {
+                    @include row ($gap: 30px);
+                    flex-wrap: wrap;
+
+                    .itm {
+                        @include itm(200px);
+                        flex: 1 0 25%;
+
+                        .itmTit {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+
+        @include mobile {
+            .inner {
+                .list {
+                    @include row ($gap: 30px);
+                    flex-wrap: wrap;
+
+                    .itm {
+                        @include itm(150px);
+                        flex: 1 0 30%;
+
+                        .itmTit {
+                            font-size: 16px;
+                        }
                     }
                 }
             }
@@ -571,6 +716,10 @@ main {
                 margin-right: 5px;
             }
         }
+
+        @include tablet {
+            background: #f9f9f9 url(../../public/image/sec_bg.png) no-repeat center center/cover;
+        }
     }
 }
 
@@ -585,6 +734,7 @@ main {
     .inner {
         @include inner;
         margin-bottom: 20px;
+        word-break: keep-all;
 
         .foot_left {
             @include row($gap: 20px);
@@ -599,5 +749,116 @@ main {
     .copy {
         @include inner;
         font-size: 13px;
+    }
+
+    @include tablet {
+        .inner {
+            @include inner;
+
+            .foot_left {
+                @include row($gap: 0 30px);
+                flex-wrap: wrap;
+                line-height: 1.4;
+                margin-bottom: 10px;
+            }
+
+            .foot_right {
+                @include row($gap: 0 30px);
+                flex-wrap: wrap;
+                line-height: 1.4;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    @include mobile {
+        .inner {
+            @include inner;
+
+            .foot_left {
+                flex-direction: column;
+            }
+
+            .foot_right {
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+.About {
+    padding: 230px 0 150px 0;
+    background: url(../../public/image/sec_bg.png) no-repeat center center/cover;
+    text-align: center;
+    font-size: 20px;
+    word-break: keep-all;
+
+    .inner {
+        @include inner;
+    }
+
+    .tit {
+        margin-bottom: 50px;
+
+        span {
+            display: block;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            width: 400px;
+            margin: 0 auto 20px auto;
+
+            img {
+                @include img(auto);
+            }
+        }
+    }
+
+    .desc {
+        em {
+            display: block;
+            color: $maincolor;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        p {
+            width: 400px;
+            margin: 0 auto 20px auto;
+        }
+
+        li {
+            line-height: 1.4;
+        }
+    }
+
+    @include mobile {
+        padding: 230px 0 150px 0;
+        background: url(../../public/image/sec_bg.png) no-repeat center center/cover;
+        font-size: 16px;
+
+        .tit {
+
+            span {
+                font-size: 24px;
+            }
+
+            h2 {
+                max-width: 300px;
+            }
+        }
+
+        .desc {
+            em {
+                font-size: 24px;
+            }
+
+            p {
+                width: auto;
+            }
+        }
     }
 }

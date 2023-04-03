@@ -2,8 +2,10 @@ import { Link, useSearchParams } from "react-router-dom";
 
 const SearchResult = ({ shopData }) => {
     const [search, setSearch] = useSearchParams();
-    const r = search.get('q');
-    const searchResult = shopData.filter(it => it.name.toUpperCase().includes(r.toUpperCase()) || it.description?.toUpperCase().includes(r.toUpperCase()));
+    const r = search.get('q') || '';
+    const searchResult = shopData.filter(it =>
+        it.name.toUpperCase().includes(r.toUpperCase())
+        || it.description?.toUpperCase().includes(r.toUpperCase()));
     console.log(searchResult);
     return (
         <div className="SearchResult">
@@ -22,7 +24,8 @@ const SearchResult = ({ shopData }) => {
                                 <li key={it.id} className="itm">
                                     <Link to={`/detail/${it.id}`}>
                                         <figure className="imgCase">
-                                            <img src={it.api_featured_image} alt="" />
+                                            <img src={it.api_featured_image}
+                                                onError={e => e.target.src = `${process.env.PUBLIC_URL}/image/missing_img.jpg`} alt="" />
                                         </figure>
                                         <strong>{it.name}</strong>
                                     </Link>

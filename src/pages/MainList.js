@@ -19,14 +19,15 @@ const MainList = ({ shopData, sw, cate }) => {
                                 <li key={it.id} className="itm">
                                     <Link to={`/detail/${it.id}`}>
                                         <figure className="imgCase">
-                                            <img src={it.api_featured_image} alt="" />
+                                            <img src={it.api_featured_image} alt=""
+                                                onError={e => e.target.src = `${process.env.PUBLIC_URL}/image/missing_img.jpg`} />
                                         </figure>
                                         <div className="itmTit">{it.name}</div>
                                         <div className="itmPrice">{parseInt(it.price * sw)}원</div>
                                     </Link>
                                 </li>
                             )
-                        }).slice(65, 71)
+                        }).slice(0, 6)
                     }
                 </ul>
             </div>

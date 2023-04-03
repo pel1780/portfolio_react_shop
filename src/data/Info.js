@@ -16,13 +16,13 @@ export const MainSlideData = [
         name: 'NEW Wink Eye Shade Primer',
         desc: '표정의 깊이를 더해주는 톤온톤 음영 메이크업 전용',
         subDesc: '아이 섀도우 프라이머',
-        link: '/',
+        link: '/EYE/eyeshadow',
     },
     {
         name: 'NEW Wink Eye Shade Primer',
         desc: '섬세한 쉐이드와 크리즈-프리 프라이머가 만나',
         subDesc: '첫 발색 그대로 유지',
-        link: '/',
+        link: '/EYE/eyeshadow',
     },
 ]
 

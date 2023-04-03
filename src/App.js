@@ -11,6 +11,7 @@ import SearchResult from "./shop/SearchResult";
 import SubList from "./shop/SubList";
 
 import './style/shop.scss';
+import About from "./pages/About";
 
 const App = () => {
     const [shopData, setShopData] = useState([]);
@@ -20,14 +21,15 @@ const App = () => {
         const r = await result.data;
         const rd = r.map(it => {
             return {
-                price: it.price != '0.0' ? it.price : '10.0',
+                price: it.price == '0.0' ? '10.0' : it.price,
                 id: it.id,
-                name: it.name,
+                name: it.name.slice(0, 25),
                 api_featured_image: it.api_featured_image,
                 description: it.description,
                 product_type: it.product_type,
                 product_colors: it.product_colors,
-                category: it.category
+                category: it.category,
+                image_link: it.image_link
             }
         })
         setShopData(rd);
@@ -35,8 +37,6 @@ const App = () => {
     useEffect(() => {
         getShopData();
     }, []);
-
-    console.log(shopData)
 
     const [sw, setW] = useState([]);
     const getKr = async () => {
@@ -47,8 +47,6 @@ const App = () => {
     useEffect(() => {
         getKr()
     }, []);
-
-    console.log(shopData)
 
     const dataType = shopData.map(it => it.product_type);
     const ItmType = dataType.filter(Boolean);
@@ -81,6 +79,7 @@ const App = () => {
                 <Route path="cart" element={<Cart shopData={shopData} cart={cart} setCart={setCart} sw={sw} />} />
                 <Route path=":type" element={<CateList shopData={shopData} sw={sw} menu={menu} />} />
                 <Route path=":type/:sub" element={<SubList shopData={shopData} sw={sw} menu={menu} />} />
+                <Route path="about" element={<About />} />
             </Route>
         </Routes>
     )

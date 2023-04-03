@@ -35,7 +35,7 @@ const Main = ({ shopData, sw }) => {
                 </div>
             </section>
             <MainBanner />
-            <MainList cate={'liquid'} shopData={shopData} sw={sw} />
+            <MainList cate={'concealer'} shopData={shopData} sw={sw} />
             <MainAbout />
         </main >
     )

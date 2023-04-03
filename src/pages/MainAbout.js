@@ -9,7 +9,7 @@ const MainAbout = () => {
                 <img src={`${process.env.PUBLIC_URL}/image/round_logo.svg`} alt="" />
             </figure>
             <p>authentic beauty</p>
-            <Link><span>More</span><BsChevronRight /></Link>
+            <Link to='/about'><span>More</span><BsChevronRight /></Link>
         </section>
     )
 }

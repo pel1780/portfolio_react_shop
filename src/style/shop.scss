@@ -7,16 +7,19 @@
 
 .detailItm {
     @include detail;
+    min-height: 82vh;
 
     .inner {
         @include inner;
         @include row($gap: 100px);
 
         figure {
-            width: 520px;
+            width: 400px;
 
             img {
-                @include img(600px);
+                @include img(450px);
+                border: $m_border;
+                padding: 50px;
             }
         }
 
@@ -27,7 +30,7 @@
         strong {
             display: block;
             margin-bottom: 20px;
-            font-size: 50px;
+            font-size: 44px;
         }
 
         .color {
@@ -46,7 +49,58 @@
             border-bottom: 1px solid #333;
         }
     }
+
+    @include tablet {
+        .inner {
+            @include row($gap: 50px);
+            flex-direction: column;
+            text-align: center;
+
+            figure {
+                margin: 0 auto;
+            }
+
+            p {
+                padding: 0 50px;
+                margin-bottom: 30px;
+            }
+        }
+    }
+
+    @include mobile {
+        .inner {
+            @include row($gap: 50px);
+            flex-direction: column;
+            text-align: center;
+
+            figure {
+                width: auto;
+                min-width: 250px;
+                max-width: 350px;
+
+                img {
+                    @include img(300px);
+                    padding: 30px;
+                }
+            }
+
+
+            strong {
+                font-size: 36px;
+            }
+
+            p {
+                font-size: 16px;
+                padding: 0 20px;
+            }
+
+            button {
+                font-size: 20px;
+            }
+        }
+    }
 }
+
 
 .Cart {
     @include detail;
@@ -87,6 +141,7 @@
 
                 img {
                     @include img(180px);
+                    padding: 10px;
                 }
             }
 
@@ -105,7 +160,43 @@
             text-align: right;
         }
     }
+
+    @include mobile {
+        @include detail;
+        min-height: 65vh;
+
+        .inner {
+
+            h2 {
+                font-size: 44px;
+            }
+
+            thead {
+                line-height: 40px;
+            }
+
+            tbody {
+
+                &.none {
+                    line-height: 80px;
+                }
+            }
+
+            .img_case {
+                width: 80px;
+
+                img {
+                    @include img(80px);
+                }
+            }
+
+            .name {
+                max-width: 150px;
+            }
+        }
+    }
 }
+
 
 
 .CateList {
@@ -161,6 +252,7 @@
 
             .itmTit {
                 margin-bottom: 10px;
+                min-height: 32px;
             }
 
             .color {
@@ -169,6 +261,65 @@
 
             .itmPrice {
                 align-items: flex-end;
+            }
+        }
+    }
+
+    @include tablet {
+        .list {
+            grid-template-columns: repeat(4, 1fr);
+
+            .itm {
+                @include itm(125px);
+
+                .itmTit {
+                    word-break: break-all;
+                }
+
+                .color {
+                    height: 32px;
+                    margin-bottom: 10px;
+                }
+
+                .itmPrice {
+                    align-items: flex-end;
+                }
+            }
+        }
+    }
+
+    @include mobile {
+        .CateTit {
+            h2 {
+                margin-bottom: 30px;
+            }
+
+            .service {
+                flex-direction: column;
+                align-items: center;
+
+                &>ul {
+                    &.sub {
+                        margin-bottom: 20px;
+                    }
+
+                    &.sort {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+
+        .list {
+            @include row($display: grid, $gap: 10px);
+            grid-template-columns: repeat(3, 1fr);
+
+            .itm {
+                @include itm(120px);
+
+                .itmTit {
+                    margin-bottom: 10px;
+                }
             }
         }
     }

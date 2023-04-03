@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { BsList, BsXLg } from "react-icons/bs";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Nav = ({ menu }) => {
-    const [on, setOn] = useState(false);
+    const [click, setClick] = useState(false);
     return (
         <nav className="gnb">
-            <ul className={on ? 'on' : ''}>
-                <li>
+            <ul className={click ? 'on' : ''} >
+                <li onClick={() => setClick(!click)}>
                     <Link to={`#!`}>Shop</Link>
                     <ul className="sub_menu">
                         {
@@ -15,7 +15,7 @@ const Nav = ({ menu }) => {
                                 return (
                                     <li key={idx}><Link to={it.type}>{it.type}</Link>
                                         <ul>
-                                            {it.sub.map((sub, idx) => <li key={idx}>
+                                            {it.sub.map((sub, idx) => <li key={idx} onClick={() => setClick(!click)}>
                                                 <Link to={`/${it.type}/${sub}`}>{sub}</Link>
                                             </li>
                                             )}
@@ -26,9 +26,9 @@ const Nav = ({ menu }) => {
                         }
                     </ul>
                 </li>
-                <li><Link to={`/about`}>About</Link></li>
+                <li onClick={() => setClick(!click)}><Link to={`/about`}>About</Link></li>
             </ul>
-            <button className="bar" onClick={() => setOn(!on)}>{on ? <BsXLg /> : <BsList />}</button>
+            <button className="bar" onClick={() => setClick(!click)}>{click ? <BsXLg /> : <BsList />}</button>
         </nav>
     )
 }

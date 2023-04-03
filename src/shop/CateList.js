@@ -58,7 +58,8 @@ const CateList = ({ shopData, sw, menu }) => {
                             <li key={it.id} className="itm">
                                 <Link to={`/detail/${it.id}`}>
                                     <figure className="imgCase">
-                                        <img src={it.api_featured_image} alt="" />
+                                        <img src={it.api_featured_image}
+                                            onError={e => e.target.src = `${process.env.PUBLIC_URL}/image/missing_img.jpg`} alt="" />
                                     </figure>
                                     <div className="itmTit">{it.name}</div>
                                     <ul className="color">
@@ -70,7 +71,7 @@ const CateList = ({ shopData, sw, menu }) => {
                                                     width: 10,
                                                     height: 10
                                                 }}></li>
-                                            }).slice(0, 20)
+                                            }).slice(0, 19)
                                         }
                                     </ul>
                                     <div className="itmPrice">{parseInt(it.price * sw)}원</div>
