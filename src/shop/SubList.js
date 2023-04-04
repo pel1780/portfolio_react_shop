@@ -74,8 +74,7 @@ const SubList = ({ shopData, sw }) => {
                                             }).slice(0, 19)
                                         }
                                     </ul>
-                                    <div className="itmPrice">{parseInt(it.price * sw).toString()
-                                        .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원</div>
+                                    <div className="itmPrice">{parseInt(it.price * sw).toLocaleString()}원</div>
                                 </Link>
                             </li>
                         )

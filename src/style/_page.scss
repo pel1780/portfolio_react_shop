@@ -254,357 +254,162 @@
     }
 }
 
-main {
-    .MainVisual {
-        position: relative;
+.MainVisual {
+    position: relative;
 
+    .slide {
+        position: relative;
+        height: 100vh;
+        text-align: center;
+
+        .txt_case {
+            @include position(absolute, auto auto 100px 50%, -50%, 0, auto);
+            color: #fff;
+
+            h2 {
+                font-size: 40px;
+                font-weight: 500;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            span {
+                display: block;
+                margin-bottom: 50px;
+                font-size: 20px;
+            }
+
+            a {
+                font-size: 20px;
+                padding-bottom: 3px;
+                border-bottom: 1px solid #fff;
+            }
+        }
+    }
+
+    @for $i from 1 to 3 {
+        .slide0#{$i} {
+            background: url(../../public/image/mainVisual0#{$i}.jpg) no-repeat center center/cover;
+        }
+    }
+
+    .controller {
+        @include position(absolute, auto auto 73px 50%, 0, 0, auto);
+        margin: 0 0 0 -668px;
+
+        button {
+            @include btn;
+            color: #fff;
+            font-size: 30px;
+
+            &.pause {
+                font-size: 48px;
+
+                &>.on {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    @include tablet {
         .slide {
-            position: relative;
-            height: 100vh;
-            text-align: center;
 
             .txt_case {
-                @include position(absolute, auto auto 100px 50%, -50%, 0, auto);
-                color: #fff;
+                @include position(absolute, auto 15px 200px 15px, 0, 0, auto);
 
                 h2 {
-                    font-size: 40px;
-                    font-weight: 500;
-                    margin-bottom: 20px;
-                }
-
-                p {
-                    font-size: 20px;
+                    font-size: 30px;
                     margin-bottom: 10px;
                 }
 
+                p {
+                    font-size: 16px;
+                }
+
                 span {
-                    display: block;
-                    margin-bottom: 50px;
-                    font-size: 20px;
+                    margin-bottom: 30px;
+                    font-size: 16px;
                 }
 
                 a {
                     font-size: 20px;
-                    padding-bottom: 3px;
-                    border-bottom: 1px solid #fff;
                 }
             }
         }
 
         @for $i from 1 to 3 {
             .slide0#{$i} {
-                background: url(../../public/image/mainVisual0#{$i}.jpg) no-repeat center center/cover;
+                background: url(../../public/image/mainVisual0#{$i}_mo.jpg) no-repeat center center/cover;
             }
         }
 
         .controller {
-            @include position(absolute, auto auto 73px 50%, 0, 0, auto);
-            margin: 0 0 0 -668px;
+            @include position(absolute, auto auto 23px 15px, 0, 0, auto);
+            margin: 0 0 0 0;
+        }
+    }
 
-            button {
-                @include btn;
-                color: #fff;
-                font-size: 30px;
+    @include mobile {
+        .slide {
+            height: 70vh;
+            text-align: left;
 
-                &.pause {
-                    font-size: 48px;
-
-                    &>.on {
-                        display: none;
-                    }
-                }
+            .txt_case {
+                @include position(absolute, auto 15px 50px 15px, 0, 0, auto);
             }
         }
 
-        @include tablet {
-            .slide {
+        .controller {
+            @include position(absolute, auto 15px 23px auto, 0, 0, auto);
+        }
+    }
+}
 
-                .txt_case {
-                    @include position(absolute, auto 15px 200px 15px, 0, 0, auto);
+.MainTab {
+    @include sec;
 
-                    h2 {
-                        font-size: 30px;
-                        margin-bottom: 10px;
-                    }
+    .inner {
+        @include inner;
+        @include row($gap: 100px);
 
-                    p {
-                        font-size: 16px;
-                    }
+        .tabMenuCase {
+            h2 {
+                font-size: 44px;
+                margin-bottom: 20px;
+            }
 
-                    span {
-                        margin-bottom: 30px;
-                        font-size: 16px;
-                    }
+            .tabMenu {
+                li {
+                    font-size: 20px;
 
                     a {
-                        font-size: 20px;
-                    }
-                }
-            }
+                        display: block;
+                        padding: 5px 0;
 
-            @for $i from 1 to 3 {
-                .slide0#{$i} {
-                    background: url(../../public/image/mainVisual0#{$i}_mo.jpg) no-repeat center center/cover;
-                }
-            }
-
-            .controller {
-                @include position(absolute, auto auto 23px 15px, 0, 0, auto);
-                margin: 0 0 0 0;
-            }
-        }
-
-        @include mobile {
-            .slide {
-                height: 70vh;
-                text-align: left;
-
-                .txt_case {
-                    @include position(absolute, auto 15px 50px 15px, 0, 0, auto);
-                }
-            }
-
-            .controller {
-                @include position(absolute, auto 15px 23px auto, 0, 0, auto);
-            }
-        }
-    }
-
-    .MainTab {
-        @include sec;
-
-        .inner {
-            @include inner;
-            @include row($gap: 100px);
-
-            .tabMenuCase {
-                h2 {
-                    font-size: 44px;
-                    margin-bottom: 20px;
-                }
-
-                .tabMenu {
-                    li {
-                        font-size: 20px;
-
-                        a {
-                            display: block;
-                            padding: 5px 0;
-
-                            &.active {
-                                color: $maincolor;
-                            }
-
-                        }
-                    }
-                }
-            }
-
-            .tabContent {
-                position: relative;
-                overflow: hidden;
-
-                .slidelist {
-
-                    .itm {
-                        @include itm(215px);
-                        text-align: center;
-                        padding: 10px;
-
-                        figure {
-                            border: $m_border;
+                        &.active {
+                            color: $maincolor;
                         }
 
-                        .itmTit {
-                            font-size: 18px;
-                            margin-bottom: 10px;
-                            min-height: 54px;
-                        }
-                    }
-
-                    .slick-dots {
-                        @include dots;
                     }
                 }
             }
         }
 
-        @include tablet {
-            .inner {
-                @include row($gap: 0);
-                flex-direction: column;
+        .tabContent {
+            position: relative;
+            overflow: hidden;
 
-                .tabMenuCase {
-                    h2 {
-                        text-align: center;
-                    }
-
-                    .tabMenu {
-                        @include row;
-                        justify-content: center;
-                        margin-bottom: 30px;
-
-                        li {
-                            a {
-                                display: block;
-                                padding: 5px 10px;
-                            }
-                        }
-                    }
-                }
-
-                .tabContent {
-                    .slidelist {
-
-                        .itm {
-                            @include itm(180px);
-                            text-align: center;
-                            padding: 10px;
-
-                            .itmTit {
-                                font-size: 16px;
-                                margin-bottom: 10px;
-                                min-height: 50px;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        @include mobile {
-            .inner {
-                .tabContent {
-                    .slidelist {
-                        .itm {
-                            @include itm(240px);
-
-                            .itmTit {
-                                font-size: 16px;
-                                margin-bottom: 10px;
-                                min-height: 40px;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    .MainBanner {
-        @include inner;
-        position: relative;
-        overflow: hidden;
-        padding: 170px 0;
-
-        &::before {
-            content: "";
-            @include position(absolute, -10px -10px -10px -10px, 0, 0, -1);
-            background: url(../../public/image/mainBanner.jpg) no-repeat center bottom -260px/cover;
-            filter: grayscale(1) blur(2px);
-        }
-
-        .inner {
-            @include inner;
-            color: #fff;
-            text-align: center;
-            text-shadow: 0 0 1px #333;
-
-            h2 {
-                font-size: 40px;
-                margin-bottom: 10px;
-            }
-
-            p {
-                font-size: 20px;
-                margin-bottom: 30px;
-            }
-
-            a {
-                display: inline-block;
-                font-size: 24px;
-                padding-bottom: 3px;
-                border-bottom: 1px solid #fff;
-            }
-        }
-
-        @include tablet {
-            padding: 100px 0;
-
-            &::before {
-                background: url(../../public/image/mainBanner.jpg) no-repeat center bottom /cover;
-                filter: grayscale(1) blur(1px);
-            }
-
-            .inner {
-                h2 {
-                    font-size: 36px;
-                }
-
-                p {
-                    font-size: 20px;
-                    margin-bottom: 20px;
-                }
-
-                a {
-                    font-size: 20px;
-                }
-            }
-        }
-
-        @include mobile {
-            padding: 80px 0;
-
-            .inner {
-                h2 {
-                    font-size: 24px;
-                }
-
-                p {
-                    font-size: 16px;
-                    margin-bottom: 20px;
-                }
-
-                a {
-                    font-size: 20px;
-                }
-            }
-        }
-    }
-
-    .MainList {
-        @include sec;
-
-        .inner {
-            @include inner;
-
-            .CateTit {
-                margin-bottom: 50px;
-                text-align: center;
-
-                h2 {
-                    font-size: 44px;
-                    margin-bottom: 10px;
-                }
-
-                a {
-                    font-size: 14px;
-
-                    span {
-                        font-size: 24px;
-                        margin-right: 5px;
-                    }
-                }
-            }
-
-            .list {
-                @include row ($gap: 30px);
+            .slidelist {
 
                 .itm {
-                    @include itm(200px);
-                    flex: 1;
+                    @include itm(215px);
                     text-align: center;
+                    padding: 10px;
 
                     figure {
                         border: $m_border;
@@ -612,43 +417,54 @@ main {
 
                     .itmTit {
                         font-size: 18px;
-                        min-height: 32px;
                         margin-bottom: 10px;
+                        min-height: 54px;
                     }
+                }
+
+                .slick-dots {
+                    @include dots;
                 }
             }
         }
+    }
 
-        @include tablet {
-            .inner {
-                .list {
-                    @include row ($gap: 30px);
-                    flex-wrap: wrap;
+    @include tablet {
+        .inner {
+            @include row($gap: 0);
+            flex-direction: column;
 
-                    .itm {
-                        @include itm(200px);
-                        flex: 1 0 25%;
+            .tabMenuCase {
+                h2 {
+                    text-align: center;
+                }
 
-                        .itmTit {
-                            font-size: 16px;
+                .tabMenu {
+                    @include row;
+                    justify-content: center;
+                    margin-bottom: 30px;
+
+                    li {
+                        a {
+                            display: block;
+                            padding: 5px 10px;
                         }
                     }
                 }
             }
-        }
 
-        @include mobile {
-            .inner {
-                .list {
-                    @include row ($gap: 30px);
-                    flex-wrap: wrap;
+            .tabContent {
+                .slidelist {
 
                     .itm {
-                        @include itm(150px);
-                        flex: 1 0 30%;
+                        @include itm(180px);
+                        text-align: center;
+                        padding: 10px;
 
                         .itmTit {
                             font-size: 16px;
+                            margin-bottom: 10px;
+                            min-height: 50px;
                         }
                     }
                 }
@@ -656,43 +472,220 @@ main {
         }
     }
 
-    .MainAbout {
-        @include sec;
-        background: #f9f9f9 url(../../public/image/sec_bg.png) no-repeat;
-        text-align: center;
+    @include mobile {
+        .inner {
+            .tabContent {
+                .slidelist {
+                    .itm {
+                        @include itm(240px);
 
-        figure {
-            height: 70px;
-            margin-bottom: 30px;
-
-            img {
-                height: 100%;
+                        .itmTit {
+                            font-size: 16px;
+                            margin-bottom: 10px;
+                            min-height: 40px;
+                        }
+                    }
+                }
             }
-        }
-
-        p {
-            font-size: 30px;
-            font-weight: 500;
-            color: $maincolor;
-            margin-bottom: 20px;
-        }
-
-        a {
-            font-size: 12px;
-
-            span {
-                font-size: 20px;
-                margin-right: 5px;
-            }
-        }
-
-        @include tablet {
-            background: #f9f9f9 url(../../public/image/sec_bg.png) no-repeat center center/cover;
         }
     }
 }
 
+.MainBanner {
+    position: relative;
+    padding: 170px 0;
 
+    &::before {
+        content: "";
+        @include position(absolute, 0 0 0 0, 0, 0, -1);
+        background: url(../../public/image/mainBanner.jpg) no-repeat center center /cover;
+        filter: grayscale(1);
+    }
+
+    .inner {
+        color: #fff;
+        text-align: center;
+        text-shadow: 0 0 1px #333;
+
+        h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        a {
+            display: inline-block;
+            font-size: 24px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid #fff;
+        }
+    }
+
+    @include tablet {
+        padding: 100px 0;
+
+        &::before {
+            background: url(../../public/image/mainBanner.jpg) no-repeat center bottom /cover;
+            filter: grayscale(1);
+        }
+
+        .inner {
+            h2 {
+                font-size: 36px;
+            }
+
+            p {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+
+            a {
+                font-size: 20px;
+            }
+        }
+    }
+
+    @include mobile {
+        padding: 80px 0;
+
+        .inner {
+            h2 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            a {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+.MainList {
+    @include sec;
+
+    .inner {
+        @include inner;
+
+        .CateTit {
+            margin-bottom: 50px;
+            text-align: center;
+
+            h2 {
+                font-size: 44px;
+                margin-bottom: 10px;
+            }
+
+            a {
+                font-size: 14px;
+
+                span {
+                    font-size: 24px;
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        .list {
+            @include row ($gap: 30px);
+
+            .itm {
+                @include itm(200px);
+                flex: 1;
+                text-align: center;
+
+                figure {
+                    border: $m_border;
+                }
+
+                .itmTit {
+                    font-size: 18px;
+                    min-height: 32px;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+
+    @include tablet {
+        .inner {
+            .list {
+                @include row ($gap: 30px);
+                flex-wrap: wrap;
+
+                .itm {
+                    @include itm(200px);
+                    flex: 1 0 25%;
+
+                    .itmTit {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+
+    @include mobile {
+        .inner {
+            .list {
+                @include row ($gap: 30px);
+                flex-wrap: wrap;
+
+                .itm {
+                    @include itm(150px);
+                    flex: 1 0 30%;
+
+                    .itmTit {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.MainAbout {
+    @include sec;
+    background: #f9f9f9 url(../../public/image/sec_bg.png) no-repeat;
+    text-align: center;
+
+    figure {
+        height: 70px;
+        margin-bottom: 30px;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    p {
+        font-size: 30px;
+        font-weight: 500;
+        color: $maincolor;
+        margin-bottom: 20px;
+    }
+
+    a {
+        font-size: 12px;
+
+        span {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+    }
+
+    @include tablet {
+        background: #f9f9f9 url(../../public/image/sec_bg.png) no-repeat center center/cover;
+    }
+}
 
 .Footer {
     padding: 50px 0;

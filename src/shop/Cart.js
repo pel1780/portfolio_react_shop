@@ -7,6 +7,10 @@ const Cart = ({ shopData, cart, setCart, sw }) => {
         const newCart = cart.map(it => it.id === id ? { ...it, num: it.num + 1 } : it);
         setCart(newCart);
     }
+    const cartDelete = (id) => {
+        const newCart = cart.map(it => it.id === id ? { ...it, num: it.num > 1 ? it.num - 1 : it.num } : it);
+        setCart(newCart);
+    }
 
     return (
         <div className="Cart">
@@ -29,18 +33,18 @@ const Cart = ({ shopData, cart, setCart, sw }) => {
                                         <td className="img_case"><img src={it.img} alt=""
                                             onError={e => e.target.src = `${process.env.PUBLIC_URL}/image/missing_img.jpg`} /></td>
                                         <td className="name">{it.name}</td>
-                                        <td>{parseInt(it.price * sw).toString()
-                                            .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원</td>
+                                        <td>{parseInt((it.price * sw) * it.num).toLocaleString()}원</td>
                                         <td>{it.num}
-                                            <button onClick={() => cartModify(it.id)}>+</button></td>
+                                            <button onClick={() => cartModify(it.id)}>+</button>
+                                            <button onClick={() => cartDelete(it.id)}>-</button>
+                                        </td>
                                     </tr>
                                 )
                             }) : <tr className="none"><td colSpan={4}>장바구니가 비어 있습니다.</td></tr>
                         }
                     </tbody>
                 </table>
-                <span className="total">합계 : {parseInt(allPrice * sw).toString()
-                    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원</span>
+                <span className="total">합계 : {parseInt(allPrice * sw).toLocaleString()}원</span>
             </div>
         </div>
     )
