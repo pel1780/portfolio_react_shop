@@ -137,10 +137,10 @@
             }
 
             .img_case {
-                width: 120px;
+                width: 100px;
 
                 img {
-                    @include img(120px);
+                    @include img(100px);
                     padding: 10px;
                 }
             }
@@ -183,15 +183,15 @@
             }
 
             .img_case {
-                width: 80px;
+                width: 60px;
 
                 img {
-                    @include img(80px);
+                    @include img(60px);
                 }
             }
 
             .name {
-                max-width: 150px;
+                max-width: 120px;
             }
         }
     }
