@@ -10,7 +10,7 @@ import Itm from "./shop/Itm";
 import SearchResult from "./shop/SearchResult";
 import SubList from "./shop/SubList";
 
-import './style/shop.scss';
+
 import About from "./pages/About";
 
 const App = () => {
