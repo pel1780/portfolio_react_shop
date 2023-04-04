@@ -147,61 +147,17 @@
     }
 
     @include tablet {
-        .inner {
-            h1 {
-                a {
-                    img {
-                        min-width: 200px;
-                    }
-                }
-            }
-
-            .gnb {
-                &>ul {
-                    &>li {
-                        .sub_menu {
-                            @include position(absolute, 80px 0 auto 0, 0, 0, auto);
-
-                            a {
-                                padding: 0 15px;
-                            }
-
-                            &::after {
-                                @include position(absolute, 0 0 auto 0, 0, 0, -1);
-                            }
-                        }
-                    }
-                }
-            }
-
-            .cart {
-                position: relative;
-
-                span {
-                    @include position(absolute, 20px 0 auto auto, 0, 0, auto);
-                    margin-left: 0;
-                }
-            }
-        }
-    }
-
-
-    @include mobile {
-        font-size: 18px;
-
         h1 {
-            img {
-                max-width: 250px;
+            a {
+                img {
+                    min-width: 200px;
+                }
             }
-        }
-
-        a {
-            padding: 0 10px;
         }
 
         .inner {
             .gnb {
-                margin-left: -10px;
+                margin-left: 0;
 
                 &>ul {
                     @include position(absolute, 80px auto 0 0, -100%, 0, 99);
@@ -228,7 +184,7 @@
                             gap: auto;
                             width: auto;
                             height: auto;
-                            padding: 0;
+                            padding: 0 15px;
                             font-weight: 400;
                             @include event_op(1, visible);
                             transition: none;
@@ -254,12 +210,13 @@
             }
 
             .right_menu {
-                @include row;
-                margin-right: -10px;
+                margin: 0;
 
                 .cart {
+                    position: relative;
+
                     span {
-                        @include position(absolute, 20px 0 auto auto, 0, 0, auto);
+                        @include position(absolute, 20px -2px auto auto, 0, 0, auto);
                         margin-left: 0;
                     }
                 }
@@ -267,6 +224,26 @@
                 button {
                     @include btn;
                 }
+            }
+        }
+    }
+
+
+    @include mobile {
+        font-size: 18px;
+
+        h1 {
+            a {
+                img {
+                    min-width: auto;
+                    max-width: 200px;
+                }
+            }
+        }
+
+        .inner {
+            .right_menu {
+                margin: 0;
 
                 .search,
                 .lang {

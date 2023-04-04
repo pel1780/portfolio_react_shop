@@ -14,7 +14,7 @@ const Search = ({ shopData }) => {
     const searchHandler = e => {
         e.preventDefault();
         setSeach(input);
-        navigate(`search/?=${input}`)
+        navigate(`search/?q=${input}`)
     }
 
     const inputHandler = e => {
