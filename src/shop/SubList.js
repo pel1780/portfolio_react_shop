@@ -7,6 +7,8 @@ const SubList = ({ shopData, sw }) => {
     const subList = shopData.filter(it => it.product_type === sub);
     const [sort, setSort] = useState([...subList]);
 
+    const [page, setPage] = useState(24);
+
     const priceUp = () => {
         setSort(subList.sort((a, b) => b.price - a.price));
     }
@@ -69,9 +71,10 @@ const SubList = ({ shopData, sw }) => {
                                 </Link>
                             </li>
                         )
-                    })
+                    }).slice(0, page)
                 }
             </ul>
+            <button onClick={() => setPage(page + 24)} className='more'>more</button>
         </div>
     )
 }

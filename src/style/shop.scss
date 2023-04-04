@@ -265,6 +265,10 @@
         }
     }
 
+    .more {
+        @include btn;
+    }
+
     @include tablet {
         .list {
             grid-template-columns: repeat(4, 1fr);
