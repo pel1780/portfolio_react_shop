@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 const CateList = ({ shopData, sw, menu }) => {
     const { type } = useParams();
@@ -12,8 +12,6 @@ const CateList = ({ shopData, sw, menu }) => {
         || it.product_type == subtit[2]
         || it.product_type == subtit[3]
     );
-
-
 
     const [sort, setSort] = useState([...list]);
 
@@ -32,6 +30,16 @@ const CateList = ({ shopData, sw, menu }) => {
     useEffect(() => {
         setSort(list)
     }, [type, shopData])
+
+    const [page, setPage] = useState(24);
+    const { pathname } = useLocation();
+    useEffect(() => {
+        return () => {
+            setPage(24);
+
+        }
+    }, [pathname])
+
 
     return (
         <div className="inner CateList">
@@ -79,9 +87,14 @@ const CateList = ({ shopData, sw, menu }) => {
                                 </Link>
                             </li>
                         )
-                    })
+                    }).slice(0, page)
                 }
             </ul>
+            {
+                sort.length < page
+                    ? ''
+                    : <button onClick={() => setPage(page + 24)} className='more'>more</button>
+            }
         </div>
     )
 }

@@ -69,6 +69,12 @@ const App = () => {
     return (
         <Routes>
             <Route path='/' element={<Layout shopData={shopData} menu={menu} cart={cart} />}>
+                <Route path="/" element={<Main shopData={shopData} sw={sw} />}>
+                    <Route index element={<MainListSlide cate={'cream'} shopData={shopData} sw={sw} />}></Route>
+                    <Route path="tab/cream" element={<MainListSlide cate={'cream'} shopData={shopData} sw={sw} />}></Route>
+                    <Route path="tab/palette" element={<MainListSlide cate={'palette'} shopData={shopData} sw={sw} />}></Route>
+                    <Route path="tab/concealer" element={<MainListSlide cate={'concealer'} shopData={shopData} sw={sw} />}></Route>
+                </Route>
                 <Route path="search" element={<SearchResult shopData={shopData} />} />
                 <Route path="detail/:itm" element={<Itm shopData={shopData} cart={cart} setCart={setCart} />} />
                 <Route path="cart" element={<Cart shopData={shopData} cart={cart} setCart={setCart} sw={sw} />} />

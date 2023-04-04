@@ -11,6 +11,7 @@ const Main = ({ shopData, sw }) => {
     const [click, setClick] = useState(false);
     return (
         <main>
+            <MainVisual />
             <section className="MainTab">
                 <div className="inner">
                     <div className="tabMenuCase">

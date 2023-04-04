@@ -1,13 +1,11 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
 
 const SubList = ({ shopData, sw }) => {
     const { sub } = useParams();
     const subList = shopData.filter(it => it.product_type === sub);
     const [sort, setSort] = useState([...subList]);
-
-    const [page, setPage] = useState(24);
 
     const priceUp = () => {
         setSort(subList.sort((a, b) => b.price - a.price));
@@ -24,7 +22,17 @@ const SubList = ({ shopData, sw }) => {
     useEffect(() => {
         setSort(subList)
     }, [sub, shopData])
-    // console.log(sort)
+
+
+    const [page, setPage] = useState(24);
+    const { pathname } = useLocation();
+    useEffect(() => {
+        return () => {
+            setPage(24);
+
+        }
+    }, [pathname])
+
 
     return (
         <div className="inner CateList">
@@ -74,7 +82,12 @@ const SubList = ({ shopData, sw }) => {
                     }).slice(0, page)
                 }
             </ul>
-            <button onClick={() => setPage(page + 24)} className='more'>more</button>
+            {
+                sort.length < page
+                    ? ''
+                    : <button onClick={() => setPage(page + 24)} className='more'>MORE</button>
+            }
+
         </div>
     )
 }
