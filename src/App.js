@@ -69,7 +69,7 @@ const App = () => {
     return (
         <Routes>
             <Route path='/' element={<Layout shopData={shopData} menu={menu} cart={cart} />}>
-                <Route index element={<Main shopData={shopData} sw={sw} />}>
+                <Route path="/" element={<Main shopData={shopData} sw={sw} />}>
                     <Route index element={<MainListSlide cate={'cream'} shopData={shopData} sw={sw} />}></Route>
                     <Route path="tab/cream" element={<MainListSlide cate={'cream'} shopData={shopData} sw={sw} />}></Route>
                     <Route path="tab/palette" element={<MainListSlide cate={'palette'} shopData={shopData} sw={sw} />}></Route>
