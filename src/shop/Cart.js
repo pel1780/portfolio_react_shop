@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Cart = ({ shopData, cart, setCart, sw }) => {
 
@@ -30,13 +31,17 @@ const Cart = ({ shopData, cart, setCart, sw }) => {
                             cart.map(it => {
                                 return (
                                     <tr key={it.id}>
-                                        <td className="img_case"><img src={it.img} alt=""
-                                            onError={e => e.target.src = `${process.env.PUBLIC_URL}/image/missing_img.jpg`} /></td>
-                                        <td className="name">{it.name}</td>
+                                        <td className="img_case">
+                                            <Link to={`/detail/${it.id}`}>
+                                                <img src={it.img} alt=""
+                                                    onError={e => e.target.src = `${process.env.PUBLIC_URL}/image/missing_img.jpg`} />
+                                            </Link>
+                                        </td>
+                                        <td className="name"><Link to={`/detail/${it.id}`}>{it.name}</Link></td>
                                         <td>{parseInt((it.price * sw) * it.num).toLocaleString()}원</td>
-                                        <td>{it.num}
-                                            <button onClick={() => cartModify(it.id)}>+</button>
-                                            <button onClick={() => cartDelete(it.id)}>-</button>
+                                        <td><span className="num">{it.num}</span>
+                                            <button onClick={() => cartModify(it.id)}><span>+</span></button>
+                                            <button onClick={() => cartDelete(it.id)}><span>-</span></button>
                                         </td>
                                     </tr>
                                 )

@@ -27,7 +27,7 @@
             flex: 1;
         }
 
-        strong {
+        .des_tit {
             display: block;
             margin-bottom: 20px;
             font-size: 44px;
@@ -38,15 +38,25 @@
         }
 
         p {
-            font-size: 18px;
             padding-right: 200px;
             margin-bottom: 50px;
         }
 
         button {
             @include btn;
-            font-size: 24px;
-            border-bottom: 1px solid #333;
+            color: $maincolor;
+            padding: 0 10px;
+            border-radius: 5px;
+
+            strong {
+                vertical-align: middle;
+            }
+
+            span {
+                vertical-align: middle;
+                margin-left: 10px;
+                font-size: 30px;
+            }
         }
     }
 
@@ -145,12 +155,26 @@
                 }
             }
 
+            .num {
+                margin-right: 5px;
+                vertical-align: middle;
+            }
+
             button {
                 @include btn;
                 border: $m_border;
-                margin-left: 5px;
-                padding: 0 3px;
-                vertical-align: -1px;
+                margin-left: 2px;
+
+                width: 19px;
+                font-size: 18px;
+                line-height: 1;
+
+                &:nth-of-type(2) {
+                    span {
+                        display: inline-block;
+                        transform: translate(0, -1px);
+                    }
+                }
             }
         }
 
@@ -180,18 +204,23 @@
                 &.none {
                     line-height: 80px;
                 }
-            }
 
-            .img_case {
-                width: 60px;
+                .img_case {
+                    width: 80px;
 
-                img {
-                    @include img(60px);
+                    img {
+                        @include img(80px);
+                    }
+                }
+
+                button {
+                    width: 17px;
+                    font-size: 16px;
                 }
             }
 
             .name {
-                max-width: 120px;
+                max-width: 100px;
             }
         }
     }
@@ -216,17 +245,23 @@
 
         .service {
             @include row;
+            position: relative;
             justify-content: space-between;
 
             &>ul {
                 @include row($gap: 20px);
+                justify-content: center;
 
                 &.sub {
+                    @include position(absolute, 0 0 0 50%, -50%, 0, auto);
                     font-size: 20px;
                 }
 
                 &.sort {
-                    margin-left: auto;
+                    li {
+                        user-select: none;
+                        cursor: pointer;
+                    }
                 }
             }
         }

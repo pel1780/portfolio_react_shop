@@ -46,6 +46,7 @@ const CateList = ({ shopData, sw, menu }) => {
             <div className="CateTit">
                 <h2>{type}</h2>
                 <div className="service">
+                    <div>{sort.length}개의 제품이 있습니다.</div>
                     <ul className="sub">
                         {typeTit.sub.map((it, idx) => <li key={idx}><Link to={`/${type}/${it}`}>{it}</Link></li>)}
                     </ul>

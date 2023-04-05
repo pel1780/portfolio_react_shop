@@ -12,6 +12,7 @@ const Main = ({ shopData, sw }) => {
     return (
         <main>
             <MainVisual />
+            <MainList cate={'eyeshadow'} shopData={shopData} sw={sw} />
             <section className="MainTab">
                 <div className="inner">
                     <div className="tabMenuCase">

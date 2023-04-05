@@ -39,6 +39,7 @@ const SubList = ({ shopData, sw }) => {
             <div className="CateTit">
                 <h2>{sub}</h2>
                 <div className="service">
+                    <div>{sort.length}개의 제품이 있습니다.</div>
                     <ul className="sort">
                         <li onClick={priceUp}>높은가격</li>
                         <li onClick={priceDown}>낮은가격</li>

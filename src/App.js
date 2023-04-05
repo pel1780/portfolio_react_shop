@@ -39,6 +39,8 @@ const App = () => {
         getShopData();
     }, []);
 
+    console.log(shopData);
+
     const [sw, setW] = useState([]);
     const getKr = async () => {
         const w = await axios.get('https://api.manana.kr/exchange/rate.json')

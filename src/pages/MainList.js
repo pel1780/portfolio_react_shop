@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { BsChevronRight } from "react-icons/bs";
 
 const MainList = ({ shopData, sw, cate }) => {
-    const list = shopData.filter(it => it.category === cate);
+    const list = shopData.filter(it => it.category === cate || it.product_type === cate);
+    const newList = cate === 'eyeshadow' ? list.slice(30, 35).map(it => it) : list.slice(0, 6).map(it => it)
 
     return (
         <section className='MainList'>
@@ -14,7 +15,7 @@ const MainList = ({ shopData, sw, cate }) => {
                 </div>
                 <ul className="list">
                     {
-                        list.map(it => {
+                        newList.map(it => {
                             return (
                                 <li key={it.id} className="itm">
                                     <Link to={`/detail/${it.id}`}>
@@ -27,7 +28,7 @@ const MainList = ({ shopData, sw, cate }) => {
                                     </Link>
                                 </li>
                             )
-                        }).slice(0, 6)
+                        })
                     }
                 </ul>
             </div>

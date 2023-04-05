@@ -21,12 +21,15 @@ const MainListSlide = ({ shopData, sw, cate }) => {
                 breakpoint: 768,
                 settings: {
                     slidesToShow: 3,
-                },
+                }
+            },
+            {
                 breakpoint: 480,
                 settings: {
                     slidesToShow: 1,
-                },
-            }]
+                }
+            },
+        ]
     }
     return (
         <div className="content">

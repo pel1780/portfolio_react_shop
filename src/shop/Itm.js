@@ -1,5 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 
+import { BsCart4 } from "react-icons/bs";
+
 const Itm = ({ shopData, cart, setCart }) => {
 
     const { itm } = useParams();
@@ -39,7 +41,7 @@ const Itm = ({ shopData, cart, setCart }) => {
                             onError={e => e.target.src = `${process.env.PUBLIC_URL}/image/missing_img.jpg`} />
                     </figure>
                     <div className="des_case">
-                        <strong> {detailItm.name}</strong>
+                        <strong className="des_tit"> {detailItm.name}</strong>
                         <ul className="color">
                             {
                                 detailItm.product_colors?.map((color, idx) => {
@@ -53,7 +55,7 @@ const Itm = ({ shopData, cart, setCart }) => {
                             }
                         </ul>
                         {detailItm.description && <p>{detailItm.description}</p>}
-                        <button onClick={addCart}>add cart</button>
+                        <button onClick={addCart}><strong>add cart</strong><span><BsCart4 /></span></button>
                     </div>
                 </figure>
             }

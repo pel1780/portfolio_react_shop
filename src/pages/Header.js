@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import Nav from "./Nav";
 import Search from "./Search";
 
+import { BsCart4 } from "react-icons/bs";
+
 const Header = ({ shopData, menu, cart }) => {
 
     return (
@@ -15,7 +17,7 @@ const Header = ({ shopData, menu, cart }) => {
                 </h1>
                 <ul className="right_menu">
                     <li className="cart">
-                        <Link to='/cart'>Cart<span>{cart.length}</span></Link>
+                        <Link to='/cart'><BsCart4 /><span>{cart.length}</span></Link>
                     </li>
                     <Search shopData={shopData} />
                 </ul>
